@@ -1,3 +1,11 @@
+#/**
+ #* Author: Nick Barton-Wells
+ #* Language: Python
+ #* Function: AWS Lambda function to notify a topic of orphaned EBS volumes
+ #* Script Name: orphanedEBSvoluems
+ #* Notes: 
+ #*/
+ 
 import boto3
 import logging
 from datetime import *
@@ -6,8 +14,11 @@ from datetime import *
 logger = logging.getLogger()
 logger.setLevel(logging.WARNING)
 
+#edit values here
 #define the connection
 ec2 = boto3.resource('ec2', region_name="eu-west-1")
+
+#define SNS connection
 sns = boto3.resource('sns')
 platform_endpoint = sns.PlatformEndpoint('[your SNS arn here]')
 
